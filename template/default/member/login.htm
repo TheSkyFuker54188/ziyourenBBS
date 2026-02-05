@@ -146,23 +146,8 @@
 								<!--{/if}-->
 
 								<!--{if $seccodecheck || $secqaacheck}-->
-								<!--
-					<!--{block sectpl}-->
-								<div class="rfm">
-									<table>
-										<tr>
-											<th>
-												<sec>:
-											</th>
-											<td>
-												<sec><br />
-													<sec>
-											</td>
-										</tr>
-									</table>
-								</div><!--{/block}-->
+								<!--{block sectpl}--><div class="rfm"><table><tr><th><sec>: </th><td><sec><br /><sec></td></tr></table></div><!--{/block}-->
 								<!--{subtemplate common/seccheck}-->
-								-->
 								<!--{/if}-->
 
 								<!--{hook/logging_input}-->
@@ -226,19 +211,8 @@
 								<div class="rfm">
 									<table>
 										<tr>
-											<th><span class="rq">*</span><label for="lostpw_email">{lang email}:</label>
-											</th>
-											<td><input type="text" name="email" id="lostpw_email" size="30" value=""
-													class="px p_fre" /></td>
-										</tr>
-									</table>
-								</div>
-								<div class="rfm">
-									<table>
-										<tr>
-											<th><label for="lostpw_username">{lang username}:</label></th>
-											<td><input type="text" name="username" id="lostpw_username" size="30"
-													value="" class="px p_fre" /></td>
+											<th><label>联系管理员:</label></th>
+											<td>请联系管理员（微信号/电话：XXX）重置密码</td>
 										</tr>
 									</table>
 								</div>
@@ -247,8 +221,7 @@
 									<table>
 										<tr>
 											<th></th>
-											<td><button class="pn pnc" type="submit" name="lostpwsubmit"
-													value="true"><span>{lang submit}</span></button></td>
+											<td><button class="pn pnc" type="button" onclick="hideWindow('login')"><span>{lang close}</span></button></td>
 										</tr>
 									</table>
 								</div>
