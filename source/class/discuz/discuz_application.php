@@ -622,6 +622,15 @@ class discuz_application extends discuz_base{
 		define('FORMHASH', $this->var['formhash']);
 
 		if($this->init_user) {
+			$allowloginpage = in_array(CURSCRIPT, array('member', 'api', 'login')) || defined('ALLOWGUEST') && ALLOWGUEST;
+			if(!$this->var['uid'] && !$allowloginpage) {
+				if(!defined('IN_MOBILE_API')) {
+					$referer = $this->var['siteurl'].$this->var['basefilename'].($_SERVER['QUERY_STRING'] ? '?'.$_SERVER['QUERY_STRING'] : '');
+					dheader('location: login.php?referer='.rawurlencode($referer));
+				} else {
+					mobile_core::result(array('error' => 'to_login'));
+				}
+			}
 			$allowvisitflag = in_array(CURSCRIPT, array('member')) || defined('ALLOWGUEST') && ALLOWGUEST;
 			if($this->var['group'] && isset($this->var['group']['allowvisit']) && !$this->var['group']['allowvisit']) {
 				if($this->var['uid'] && !$allowvisitflag) {
